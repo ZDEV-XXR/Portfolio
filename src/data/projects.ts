@@ -16,7 +16,7 @@ export const projects: Project[] = [
     description: "A high-performance Android news aggregator that fetches real-time global headlines. Implemented custom caching logic to allow offline reading and utilized Retrofit for seamless API integration.",
     techStack: ["Android", "Jetpack Compose", "Firebase", "Kotlin", "Retrofit"],
     githubUrl: "https://github.com/ZDEV-XXR/InstantNews",
-    demoUrl: "https://portal.testapp.io/apps/install/rQ8RQ16xxObpW",
+    demoUrl: "https://portal.testapp.io/apps/install/6ebVxWXaL4WmA",
     image: "./Assets/instantNews.png",
     category: "Mobile"
   },
