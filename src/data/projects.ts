@@ -12,6 +12,16 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "1",
+    title: "Portfolio Website ( This )",
+    description: "",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "next-themes"],
+    githubUrl: "https://github.com/ZDEV-XXR/Portfolio",
+    demoUrl: "",
+    image: "./Assets/portfolio.jpg",
+    category: "Web"
+  },
+  {
+    id: "2",
     title: "Instant News",
     description: "A high-performance Android news aggregator that fetches real-time global headlines. Implemented custom caching logic to allow offline reading and utilized Retrofit for seamless API integration.",
     techStack: ["Android", "Jetpack Compose", "Firebase", "Kotlin", "Retrofit"],
@@ -21,13 +31,13 @@ export const projects: Project[] = [
     category: "Mobile"
   },
   {
-    id: "2",
-    title: "DocReader",
-    description: "App Description",
+    id: "3",
+    title: "DocReader ( In Progress )",
+    description: "Read, scan Documents",
     techStack: ["Android", "Jetpack Compose", "Kotlin"],
-  githubUrl: "https://www.google.com/",
-    demoUrl: "https://www.google.com/",
-    image: "https://picsum.photos/id/104/400/200",
+    githubUrl: "https://github.com/ZDEV-XXR/DocReader",
+    demoUrl: "",
+    image: "./Assets/docReader.png",
     category: "Mobile"
   },
 ];

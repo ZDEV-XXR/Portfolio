@@ -4,6 +4,20 @@ import { motion } from "framer-motion";
 export default function Hero() {
   return (
     <section className="flex flex-col items-center justify-center py-20 text-center">
+      {/* Profile Image */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="mb-6"
+      >
+        <img
+          src="./Assets/me.jpg" // change to your actual image path
+          alt="Hamza"
+          className="w-64 h-64 rounded-full object-cover border-4 border-indigo-500 shadow-lg"
+        />
+      </motion.div>
+
       <motion.h1 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Hamza Lemghari",
   description: "Portfolio of Hamza Lemghari, a software engineer specializing in web/app development and design.",
+   icons: {
+    icon: "./Assets/me.jpg",
+  },
 };
 
 export default function RootLayout({
