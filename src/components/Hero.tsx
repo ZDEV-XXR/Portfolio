@@ -31,7 +31,7 @@ export default function Hero() {
         transition={{ delay: 0.2 }}
         className="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-2xl"
       >
-        I'm a Web & Mobile Developer specializing in Kotlin, React and Next.js, 
+        I'm a Web & Mobile Developer, 
         building clean, performant applications.
       </motion.p>
     </section>
