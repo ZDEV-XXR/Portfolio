@@ -17,7 +17,7 @@ export const projects: Project[] = [
     techStack: ["Next.js 14", "Tailwind CSS", "Framer Motion"],
     githubUrl: "https://github.com/ZDEV-XXR/Portfolio",
     demoUrl: "",
-    image: "./assets/portfolio.jpg",
+    image: "./assets/po.jpg",
     category: "Web"
   },
   {
