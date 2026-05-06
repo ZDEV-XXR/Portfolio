@@ -27,7 +27,7 @@ export const projects: Project[] = [
     techStack: ["Android", "Jetpack Compose", "Firebase", "Kotlin", "Retrofit"],
     githubUrl: "https://github.com/ZDEV-XXR/InstantNews",
     demoUrl: "https://portal.testapp.io/apps/install/6ebVxWXaL4WmA",
-    image: "./Assets/instantNews.png",
+    image: "./assets/instantNews.png",
     category: "Mobile"
   },
   {
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     techStack: ["Android", "Jetpack Compose", "Kotlin"],
     githubUrl: "https://github.com/ZDEV-XXR/DocReader",
     demoUrl: "",
-    image: "./Assets/docReader.png",
+    image: "./assets/docReader.png",
     category: "Mobile"
   },
   {

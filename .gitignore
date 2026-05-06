@@ -1,41 +1,39 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# --- DEPENDENCIES ---
+# Never push these. Vercel runs 'npm install' to create its own.
+node_modules/
+.pnp
+.pnp.js
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+# --- NEXT.JS BUILD OUTPUT ---
+# These are generated during 'npm run build'. 
+# Vercel creates these on its servers, so your local ones are not needed.
+.next/
+out/
+build/
 
-# testing
-/coverage
+# --- ENVIRONMENT VARIABLES ---
+# CRITICAL: This prevents your private API keys from being public on GitHub.
+# You will add these keys manually in the Vercel Dashboard instead.
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
+# --- DEBUG & LOGS ---
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# --- SYSTEM FILES ---
+# Keeps your repo clean of OS-specific metadata
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
 
-# vercel
+# --- VERCEL SPECIFIC ---
+# Hidden folder created if you use the Vercel CLI locally
 .vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
