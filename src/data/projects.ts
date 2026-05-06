@@ -14,7 +14,7 @@ export const projects: Project[] = [
     id: "1",
     title: "Portfolio Website ( This )",
     description: "",
-    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "next-themes"],
+    techStack: ["Next.js 14", "Tailwind CSS", "Framer Motion"],
     githubUrl: "https://github.com/ZDEV-XXR/Portfolio",
     demoUrl: "",
     image: "./Assets/portfolio.jpg",
