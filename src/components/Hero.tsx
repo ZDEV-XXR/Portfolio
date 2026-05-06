@@ -12,7 +12,7 @@ export default function Hero() {
         className="mb-6"
       >
         <img
-          src="./Assets/me.jpg"
+          src="./assets/me.jpg"
           alt="Hamza"
           className="w-64 h-64 rounded-full object-cover border-4 border-indigo-500 shadow-lg"
         />
