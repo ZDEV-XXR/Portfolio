@@ -40,4 +40,14 @@ export const projects: Project[] = [
     image: "./Assets/docReader.png",
     category: "Mobile"
   },
+  {
+    id: "4",
+    title: "Upwork Job Radar ( staged to be published )",
+    description: "Upwork Job Radar is a Chrome extension that helps freelancers stay updated on the latest job postings on Upwork. It provides real-time notifications for new job listings based on user-defined criteria, allowing freelancers to quickly respond to relevant opportunities and increase their chances of securing projects.",
+    techStack: ["HTML5 & CSS3", "JavaScript", "Manifest V3 (MV3)"],
+    githubUrl: "https://github.com/ZDEV-XXR/Upwork-Job-Radar",
+    demoUrl: "https://chromewebstore.google.com/detail/upwork-job-radar/bcddocmbchgocihecaagkhneoegoldda?authuser=1&hl=en",
+    image: "./Assets/upworkradar.png",
+    category: "Web"
+  }
 ];
