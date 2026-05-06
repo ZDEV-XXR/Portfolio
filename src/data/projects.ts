@@ -17,7 +17,7 @@ export const projects: Project[] = [
     techStack: ["Next.js 14", "Tailwind CSS", "Framer Motion"],
     githubUrl: "https://github.com/ZDEV-XXR/Portfolio",
     demoUrl: "",
-    image: "./Assets/portfolio.jpg",
+    image: "./assets/portfolio.jpg",
     category: "Web"
   },
   {
@@ -27,7 +27,7 @@ export const projects: Project[] = [
     techStack: ["Android", "Jetpack Compose", "Firebase", "Kotlin", "Retrofit"],
     githubUrl: "https://github.com/ZDEV-XXR/InstantNews",
     demoUrl: "https://portal.testapp.io/apps/install/6ebVxWXaL4WmA",
-    image: "./assets/instantNews.png",
+    image: "./assets/in.png",
     category: "Mobile"
   },
   {
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     techStack: ["Android", "Jetpack Compose", "Kotlin"],
     githubUrl: "https://github.com/ZDEV-XXR/DocReader",
     demoUrl: "",
-    image: "./assets/docReader.png",
+    image: "./assets/dr.png",
     category: "Mobile"
   },
   {
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     techStack: ["HTML5 & CSS3", "JavaScript", "Manifest V3 (MV3)"],
     githubUrl: "https://github.com/ZDEV-XXR/Upwork-Job-Radar",
     demoUrl: "https://chromewebstore.google.com/detail/upwork-job-radar/bcddocmbchgocihecaagkhneoegoldda?authuser=1&hl=en",
-    image: "./Assets/upworkradar.png",
+    image: "./assets/ur.png",
     category: "Web"
   }
 ];
