@@ -41,14 +41,24 @@ export default function ProjectCard({ project }: { project: Project }) {
           >
             GitHub
           </a>
-          {project.demoUrl && (
+          {project.apkUrl && (
             <a 
-              href={project.demoUrl}
+              href={project.apkUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 text-center py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-500 shadow-lg shadow-indigo-500/20 transition-all"
             >
-              App Demo
+              Download APK
+            </a>
+          )}
+          {project.extUrl && (
+            <a 
+              href={project.extUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 text-center py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-500 shadow-lg shadow-indigo-500/20 transition-all"
+            >
+              Get Extension
             </a>
           )}
         </div>
