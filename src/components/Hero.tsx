@@ -18,20 +18,20 @@ export default function Hero() {
         />
       </motion.div>
 
-      <motion.h1 
+      <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-6xl font-bold tracking-tight text-slate-900 dark:text-white"
       >
-        HI, I'M HAMZA
+        HI, I'M HAMZA LEMGHARI
       </motion.h1>
-      <motion.p 
+      <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
         className="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-2xl"
       >
-        I'm a Web & Mobile Developer, 
+        I'm a Web & Mobile Developer,
         building clean, performant applications.
       </motion.p>
     </section>

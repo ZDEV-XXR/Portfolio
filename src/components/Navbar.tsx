@@ -32,7 +32,7 @@ export default function Navbar() {
             transition={{ delay: 0.1 }}
             className="text-lg font-bold tracking-tight text-slate-900 dark:text-white"
           >
-            Hamza<span className="text-indigo-500">.</span>
+            Hamza Lemghari<span className="text-indigo-500">.</span>
           </motion.span>
 
           {/* Nav links */}
