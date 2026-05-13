@@ -1,12 +1,28 @@
 import { projects } from "@/src/data/projects";
 import ProjectCard from "@/src/components/ProjectCard";
 import Hero from "@/src/components/Hero";
+import About from "@/src/components/About";
+import Skills from "@/src/components/Skills";
 
 export default function Home() {
   return (
     <main className="max-w-6xl mx-auto px-6">
-      <Hero />
-      
+      {/* Home */}
+      <section id="home">
+        <Hero />
+      </section>
+
+      {/* About */}
+      <section id="about">
+        <About />
+      </section>
+
+      {/* Skills */}
+      <section id="skills">
+        <Skills />
+      </section>
+
+      {/* Projects */}
       <section className="py-12">
         <h2 className="text-3xl font-bold mb-8 text-slate-900 dark:text-white">
           Featured Projects

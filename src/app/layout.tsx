@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@/src/styles/globals.css";
 import { ThemeProvider } from "@/src/components/ThemeProvider";
 import ThemeToggle from "@/src/components/ThemeToggle";
+import Navbar from "@/src/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   title: "Hamza Lemghari",
   description: "Portfolio of Hamza Lemghari, a software engineer specializing in web/app development and design.",
    icons: {
-    icon: "./assets/me.jpg",
+    icon: "/assets/me.jpg",
   },
 };
 
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} min-h-full flex flex-col`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navbar />
           {children}
           <ThemeToggle />
         </ThemeProvider>

@@ -14,7 +14,7 @@ export const projects: Project[] = [
   {
     id: "1",
     title: "Portfolio Website ( This )",
-    description: "",
+    description: "A personal portfolio showcasing my projects and skills, built with Next.js, Tailwind CSS, and Framer Motion animations.",
     techStack: ["Next.js 14", "Tailwind CSS", "Framer Motion"],
     githubUrl: "https://github.com/ZDEV-XXR/Portfolio",
     image: "./assets/po.jpg",
