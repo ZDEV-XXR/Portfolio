@@ -3,6 +3,7 @@ import ProjectCard from "@/src/components/ProjectCard";
 import Hero from "@/src/components/Hero";
 import About from "@/src/components/About";
 import Skills from "@/src/components/Skills";
+import Contact from "@/src/components/Contact";
 
 export default function Home() {
   return (
@@ -33,6 +34,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Contact */}
+      <Contact />
     </main>
   );
 }
