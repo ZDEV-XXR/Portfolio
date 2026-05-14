@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -37,26 +38,36 @@ export default function Navbar() {
           </motion.span>
 
           {/* Nav links */}
-          <ul className="flex items-center gap-1">
-            {navLinks.map((link, i) => (
-              <motion.li
-                key={link.href}
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + i * 0.07 }}
-              >
-                <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href={link.href}
-                  onClick={(e) => handleScroll(e, link.href)}
-                  className="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 block"
+          <div className="flex items-center gap-1 md:gap-2">
+            <ul className="flex items-center gap-1">
+              {navLinks.map((link, i) => (
+                <motion.li
+                  key={link.href}
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + i * 0.07 }}
                 >
-                  {link.label}
-                </motion.a>
-              </motion.li>
-            ))}
-          </ul>
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href={link.href}
+                    onClick={(e) => handleScroll(e, link.href)}
+                    className="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 block"
+                  >
+                    {link.label}
+                  </motion.a>
+                </motion.li>
+              ))}
+            </ul>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4 }}
+              className="ml-2 pl-2 border-l border-slate-200 dark:border-slate-800"
+            >
+              <ThemeToggle />
+            </motion.div>
+          </div>
         </nav>
       </div>
     </motion.header>

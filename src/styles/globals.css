@@ -2,20 +2,34 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-:root {
-  --background: #EDE9E6;
-  --foreground: #171717;
+@theme {
+  /* Premium Midnight Blue / Cool Slate Palette overriding default slate */
+  --color-slate-50: #F0F4F8;
+  --color-slate-100: #D9E2EC;
+  --color-slate-200: #BCCCDC;
+  --color-slate-300: #9FB3C8;
+  --color-slate-400: #829AB1;
+  --color-slate-500: #627D98;
+  --color-slate-600: #486581;
+  --color-slate-700: #334E68;
+  --color-slate-800: #243B53;
+  --color-slate-900: #102A43;
+  --color-slate-950: #091428;
 }
 
+:root {
+  --background: var(--color-slate-50);
+  --foreground: var(--color-slate-900);
+}
 
 /* Dark mode class (toggled by next-themes) */
 .dark {
-  --background: #0a0a0a;
-  --foreground: #EDE9E6;
+  --background: var(--color-slate-950);
+  --foreground: var(--color-slate-50);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
-}
+}

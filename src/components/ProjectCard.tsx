@@ -3,11 +3,19 @@ import { motion } from "framer-motion";
 import { Project } from "@/src/data/projects";
 import TechBadge from "./TechBadge";
 
-export default function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
   return (
     <motion.div 
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
       whileHover={{ y: -10, scale: 1.02 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      transition={{ 
+        y: { type: "spring", stiffness: 300, damping: 20 },
+        scale: { type: "spring", stiffness: 300, damping: 20 },
+        opacity: { duration: 0.4, delay: index * 0.1 },
+        default: { duration: 0.4 }
+      }}
       className="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-lg dark:shadow-2xl transition-all"
     >
       <div className="relative h-48 w-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
