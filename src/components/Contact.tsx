@@ -108,12 +108,14 @@ export default function Contact() {
               ></textarea>
             </div>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={isSubmitting || isSubmitted}
-              className={`w-full py-3 px-6 rounded-xl text-white font-medium transition-all flex justify-center items-center gap-2 ${isSubmitted
-                  ? "bg-emerald-500 hover:bg-emerald-600"
-                  : "bg-indigo-600 hover:bg-indigo-700"
+              className={`w-full py-3 px-6 rounded-xl text-white font-medium transition-all flex justify-center items-center gap-2 shadow-lg ${isSubmitted
+                  ? "bg-emerald-500 hover:bg-emerald-600 shadow-emerald-500/25"
+                  : "bg-indigo-600 hover:bg-indigo-700 shadow-indigo-500/25"
                 } ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
             >
               {isSubmitting ? (
@@ -123,7 +125,7 @@ export default function Contact() {
               ) : (
                 "Send Message"
               )}
-            </button>
+            </motion.button>
           </form>
         </div>
       </motion.div>

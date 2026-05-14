@@ -6,7 +6,8 @@ import TechBadge from "./TechBadge";
 export default function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.div 
-      whileHover={{ y: -10 }}
+      whileHover={{ y: -10, scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className="bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-lg dark:shadow-2xl transition-all"
     >
       <div className="relative h-48 w-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
@@ -33,33 +34,39 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
 
         <div className="mt-6 flex gap-3">
-          <a 
+          <motion.a 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 text-center py-2 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-all"
+            className="flex-1 text-center py-2 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-all shadow-sm"
           >
             GitHub
-          </a>
+          </motion.a>
           {project.apkUrl && (
-            <a 
+            <motion.a 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               href={project.apkUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 text-center py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-500 shadow-lg shadow-indigo-500/20 transition-all"
             >
               Download APK
-            </a>
+            </motion.a>
           )}
           {project.extUrl && (
-            <a 
+            <motion.a 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               href={project.extUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 text-center py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-500 shadow-lg shadow-indigo-500/20 transition-all"
             >
               Get Extension
-            </a>
+            </motion.a>
           )}
         </div>
       </div>

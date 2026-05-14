@@ -24,7 +24,7 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <section className="py-12">
+      <section id="projects" className="py-12">
         <h2 className="text-3xl font-bold mb-8 text-slate-900 dark:text-white">
           Featured Projects
         </h2>
