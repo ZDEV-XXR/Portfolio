@@ -15,11 +15,16 @@ export default function Navbar() {
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    setIsOpen(false);
+    
     const target = document.querySelector(href);
     if (target) {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+    
+    // Allow scroll to initiate before unmounting the dropdown
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 200);
   };
 
   return (
