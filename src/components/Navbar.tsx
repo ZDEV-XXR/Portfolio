@@ -4,10 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
+  { label: "About", href: "#home" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -34,7 +34,7 @@ export default function Navbar() {
       transition={{ duration: 0.4 }}
       className="sticky top-0 z-50 w-full"
     >
-      <div className="mx-auto max-w-6xl px-6 py-4">
+      <div className="mx-auto max-w-6xl px-6 py-4 relative">
         <nav className="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md px-6 py-3 shadow-sm">
           {/* Logo / Name */}
           <motion.span
@@ -111,7 +111,7 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0, y: -10 }}
               animate={{ opacity: 1, height: "auto", y: 0 }}
               exit={{ opacity: 0, height: 0, y: -10 }}
-              className="md:hidden overflow-hidden mt-2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl"
+              className="md:hidden absolute top-full left-6 right-6 mt-2 overflow-hidden bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl"
             >
               <ul className="flex flex-col py-4 px-2">
                 {navLinks.map((link) => (

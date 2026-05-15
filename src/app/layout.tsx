@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth scroll-pt-24" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} min-h-full flex flex-col`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
