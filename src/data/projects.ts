@@ -1,13 +1,18 @@
+import { Url } from "next/dist/shared/lib/router/router";
+import RootLayout from "../app/layout";
+import Status from "@/src/app/Status"
+
 export interface Project {
   id: string;
   title: string;
   description: string;
   techStack: string[];
-  githubUrl: string;
+  githubUrl?: string;
   apkUrl?: string;
   extUrl?: string;
+  statusUrl?: string;
   image: string;
-  category: 'Web' | 'Mobile';
+  category: 'Web' | 'Mobile' | 'Automation';
 }
 
 export const projects: Project[] = [
@@ -49,5 +54,15 @@ export const projects: Project[] = [
     extUrl: "https://chromewebstore.google.com/detail/upwork-job-radar/bcddocmbchgocihecaagkhneoegoldda?authuser=1&hl=en",
     image: "./assets/ur.png",
     category: "Web"
+  },
+  {
+    id: "5",
+    title: "Automated Service Heartbeat Tracker",
+    description: "An automated monitoring system that tracks website health every 5 minutes, instantly logging downtime to a cloud database and firing developer alerts on failure.",
+    techStack: ["MAKE.COM", "HTTP APIs", "SUPABASE", "WEBHOOKS"],
+    extUrl: "",
+    statusUrl: "/status",
+    image: "./assets/do.jpg",
+    category: "Automation"
   }
 ];

@@ -72,6 +72,17 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </div>
 
               <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-4">
+
+                {project.statusUrl && (
+                <a
+                  href= {project.statusUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 min-w-[140px] text-center py-3 rounded-xl border-2 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-all">
+                  View Websites Automation Status
+                </a>
+                )}
+                {project.githubUrl && (
                 <a
                   href={project.githubUrl}
                   target="_blank"
@@ -80,6 +91,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 >
                   View Source Code
                 </a>
+                )}
                 {project.apkUrl && (
                   <a
                     href={project.apkUrl}

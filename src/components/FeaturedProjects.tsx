@@ -6,7 +6,7 @@ import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
 
 export default function FeaturedProjects() {
-  const [filterCategory, setFilterCategory] = useState<"All" | "Web" | "Mobile">("All");
+  const [filterCategory, setFilterCategory] = useState<"All" | "Web" | "Mobile" | "Automation">("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const filteredProjects = useMemo(() => {
@@ -14,7 +14,7 @@ export default function FeaturedProjects() {
     return projects.filter((p) => p.category === filterCategory);
   }, [filterCategory]);
 
-  const categories: ("All" | "Web" | "Mobile")[] = ["All", "Web", "Mobile"];
+  const categories: ("All" | "Web" | "Mobile" | "Automation")[] = ["All", "Web", "Mobile", "Automation"];
 
   return (
     <>

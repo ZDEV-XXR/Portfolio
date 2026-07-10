@@ -7,6 +7,7 @@ import Contact from "@/src/components/Contact";
 export default function Home() {
   return (
     <main className="max-w-6xl mx-auto px-6">
+
       {/* Home */}
       <section id="home">
         <Hero />
@@ -23,8 +24,7 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <FeaturedProjects />
-
+      <FeaturedProjects />   
       {/* Contact */}
       <Contact />
     </main>
