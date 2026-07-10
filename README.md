@@ -1,5 +1,5 @@
 🚀 Hamza's Modern Portfolio
-A premium, minimalist developer portfolio built with Next.js 14, Tailwind CSS, and Framer Motion. This project features a sophisticated "floating card" aesthetic, a 3-column responsive grid, and a fully functional dark/light mode ecosystem.
+A minimalist developer portfolio built with Next.js 14, Tailwind CSS, and Framer Motion. This project features a sophisticated "floating card" aesthetic, a 3-column responsive grid, and a fully functional dark/light mode ecosystem.
 
 ✨ Key Features
 Premium UI/UX: Inspired by high-end developer portfolios with a focus on white space, bold typography, and smooth transitions.
@@ -39,28 +39,9 @@ src/
 │   └── projects.ts     # Centralized project data
 └── styles/
     └── globals.css     # Global CSS and Tailwind directives
-🚀 Getting Started
-Clone the repository
-
-Bash
-git clone https://github.com/ZDEV-XXR/Portfolio.git
-Install dependencies
-
-Bash
-npm install
-Run the development server
-
-Bash
-npm run dev
-Build for production
-
-Bash
-npm run build
-🎨 Design Decisions
-The "H" Logo: A minimalist, bold brand identity that works in both light and dark backgrounds.
-
+    
 Grid System: Used lg:grid-cols-3 to balance the visual weight of the cards against the hero text.
 
 Floating Toggle: Placed the theme switch in the bottom-right corner to maintain a clean Navbar and prioritize "thumb-friendly" mobile interaction.
 
-Developed with ❤️ by Hamza Lemghari
+Developed by Hamza Lemghari
