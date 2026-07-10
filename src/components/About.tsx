@@ -23,8 +23,9 @@ export default function About() {
           </p>
           <p className="mt-4 text-slate-600 dark:text-slate-300 leading-relaxed text-base">
             Whether it&apos;s crafting pixel-perfect UIs, building RESTful APIs, 
-            or developing browser extensions — I enjoy the full spectrum of 
-            software development. I&apos;m always exploring new technologies and 
+            developing browser extensions, or designing robust DevOps and automation 
+            workflows using tools like Make.com — I enjoy the full spectrum of 
+            software engineering. I&apos;m always exploring new technologies and 
             looking for opportunities to grow.
           </p>
         </div>

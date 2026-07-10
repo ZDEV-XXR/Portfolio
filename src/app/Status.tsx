@@ -35,6 +35,7 @@ export default function Status() {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showScreenshot, setShowScreenshot] = useState(false);
 
   const fetchServices = async () => {
     try {
@@ -83,10 +84,29 @@ export default function Status() {
     <div className="min-h-screen bg-white dark:bg-slate-950 p-6 md:p-12 font-sans pt-32">
       <div className="max-w-5xl mx-auto space-y-8">
         
-        <header className="mb-8">
-          <h1 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">System Status</h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-2">Live operational status of monitored services.</p>
+        <header className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <h1 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">System Status</h1>
+            <p className="text-slate-500 dark:text-slate-400 mt-2">Live operational status of monitored services.</p>
+          </div>
+          <button 
+            onClick={() => setShowScreenshot(!showScreenshot)}
+            className="flex items-center justify-center gap-2 px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60 rounded-xl hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors text-sm font-semibold shadow-sm"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            {showScreenshot ? "Hide Automation Screenshot" : "View Automation Screenshot"}
+          </button>
         </header>
+
+        {showScreenshot && (
+          <div className="mb-8 p-2 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm transition-all animate-in fade-in slide-in-from-top-4 duration-300">
+            <img 
+              src="/assets/as.png" 
+              alt="Make.com Automation Workflow" 
+              className="w-full h-auto rounded-xl object-contain border border-slate-100 dark:border-slate-800"
+            />
+          </div>
+        )}
 
         {loading && services.length === 0 ? (
           <div className="flex justify-center items-center h-40">

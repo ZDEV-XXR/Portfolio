@@ -58,7 +58,7 @@ export const projects: Project[] = [
   {
     id: "5",
     title: "Automated Service Heartbeat Tracker",
-    description: "An automated monitoring system that tracks website health every 5 minutes, instantly logging downtime to a cloud database and firing developer alerts on failure.",
+    description: "An automated monitoring system that tracks website health every 12 Hours, instantly logging downtime to a cloud database and firing developer alerts on failure.",
     techStack: ["MAKE.COM", "HTTP APIs", "SUPABASE", "WEBHOOKS"],
     extUrl: "",
     statusUrl: "/status",
