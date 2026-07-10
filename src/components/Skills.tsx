@@ -4,13 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   SiNextdotjs, SiReact, SiTypescript, SiJavascript, SiTailwindcss,
   SiHtml5, SiKotlin, SiJetpackcompose, SiAndroid, SiFirebase,
-  SiGithub, SiMake, SiGit,
+  SiGithub, SiMake, SiGit, SiAndroidstudio,
 } from "react-icons/si";
-import { MdOutlineApi, MdDevices } from "react-icons/md";
-import { VscAzureDevops } from "react-icons/vsc";
-import { TbAutomation } from "react-icons/tb";
+import { MdOutlineApi } from "react-icons/md";
+import { VscAzureDevops, VscVscode } from "react-icons/vsc";
+import { TbAutomation, TbSparkles } from "react-icons/tb";
 
-const categories = ["All", "Web", "Mobile", "DevOps & Automation"] as const;
+const categories = ["All", "Web", "Mobile", "DevOps & Automation", "Tools"] as const;
 type Category = (typeof categories)[number];
 
 interface Skill {
@@ -111,8 +111,27 @@ const skills: Skill[] = [
   {
     name: "Make.com",
     color: "bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-900/30 dark:text-fuchsia-300 border border-fuchsia-200 dark:border-fuchsia-800",
-    category: "DevOps & Automation",
+    category: "Tools",
     icon: <SiMake className="w-4 h-4" />,
+  },
+  // Tools
+  {
+    name: "Android Studio",
+    color: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 border border-green-200 dark:border-green-800",
+    category: "Tools",
+    icon: <SiAndroidstudio className="w-4 h-4" />,
+  },
+  {
+    name: "VS Code",
+    color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 border border-blue-200 dark:border-blue-800",
+    category: "Tools",
+    icon: <VscVscode className="w-4 h-4" />,
+  },
+  {
+    name: "Antigravity",
+    color: "bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300 border border-violet-200 dark:border-violet-800",
+    category: "Tools",
+    icon: <TbSparkles className="w-4 h-4" />,
   },
 ];
 
