@@ -188,8 +188,9 @@ export default function Navbar() {
                 </div>
                 <div className="flex items-center gap-3">
                   <a
-                    href="https://drive.google.com/file/d/1dkViZdUIBjSDtk1L7g5HE3jPMwSQFSIs/view?usp=sharing"
-                    download="Hamza_Lemghari_CV.pdf"
+                    href="https://drive.google.com/uc?export=download&id=1dkViZdUIBjSDtk1L7g5HE3jPMwSQFSIs"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold bg-indigo-600 text-white hover:bg-indigo-500 shadow-sm transition-colors"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
@@ -212,7 +213,7 @@ export default function Navbar() {
               </div>
               {/* PDF Viewer — Google Docs renders in all browsers without a plugin */}
               <iframe
-                src="https://drive.google.com/file/d/1dkViZdUIBjSDtk1L7g5HE3jPMwSQFSIs/view?usp=sharing"
+                src="https://drive.google.com/file/d/1dkViZdUIBjSDtk1L7g5HE3jPMwSQFSIs/preview"
                 className="w-full flex-1 border-0"
                 title="Hamza Lemghari CV"
               />
