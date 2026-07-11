@@ -188,7 +188,7 @@ export default function Navbar() {
                 </div>
                 <div className="flex items-center gap-3">
                   <a
-                    href="/assets/cv.pdf"
+                    href="https://drive.google.com/file/d/1dkViZdUIBjSDtk1L7g5HE3jPMwSQFSIs/view?usp=sharing"
                     download="Hamza_Lemghari_CV.pdf"
                     className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold bg-indigo-600 text-white hover:bg-indigo-500 shadow-sm transition-colors"
                   >
@@ -212,7 +212,7 @@ export default function Navbar() {
               </div>
               {/* PDF Viewer — Google Docs renders in all browsers without a plugin */}
               <iframe
-                src="https://docs.google.com/viewer?url=https://www.hamzalemghari.site/assets/cv.pdf&embedded=true"
+                src="https://drive.google.com/file/d/1dkViZdUIBjSDtk1L7g5HE3jPMwSQFSIs/view?usp=sharing"
                 className="w-full flex-1 border-0"
                 title="Hamza Lemghari CV"
               />
