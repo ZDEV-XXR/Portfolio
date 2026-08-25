@@ -16,17 +16,12 @@ export default function About() {
         <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 backdrop-blur-sm p-8">
           <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
             Hi, I&apos;m <span className="font-semibold text-indigo-600 dark:text-indigo-400">Hamza Lemghari</span> — 
-            a passionate Web &amp; Mobile Developer who loves building clean, 
-            performant applications. I specialize in modern front-end frameworks, 
-            Android development with Kotlin and Jetpack Compose, and creating 
-            tools that solve real-world problems.
+            Full-Stack Software Developer & AI Enthusiast.
+            I engineer robust web platforms, craft intuitive mobile applications, and explore interactive environments.
+            I bridge the gap between creative design and technical execution to build digital experiences that matter.
           </p>
           <p className="mt-4 text-slate-600 dark:text-slate-300 leading-relaxed text-base">
-            Whether it&apos;s crafting pixel-perfect UIs, building RESTful APIs, 
-            developing browser extensions, or designing robust DevOps and automation 
-            workflows using tools like Make.com — I enjoy the full spectrum of 
-            software engineering. I&apos;m always exploring new technologies and 
-            looking for opportunities to grow.
+            I specialize in full-stack development, moving seamlessly from designing UI/UX wireframes in Figma to deploying scalable applications using Next.js, TypeScript, and Django.
           </p>
         </div>
       </motion.div>
