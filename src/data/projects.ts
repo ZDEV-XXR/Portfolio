@@ -1,6 +1,6 @@
 import { Url } from "next/dist/shared/lib/router/router";
 import RootLayout from "../app/layout";
-import Status from "@/src/app/Status"
+import Status from "@/src/components/Projects/ServiceTracker/Status"
 
 export interface Project {
   id: string;

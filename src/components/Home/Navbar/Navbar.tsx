@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "../../ui/theme/ThemeToggle";
 
 const navLinks = [
   { label: "Home", href: "#home" },
