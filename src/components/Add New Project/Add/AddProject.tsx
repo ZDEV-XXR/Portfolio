@@ -35,6 +35,7 @@ interface AddProjectProps {
      */
     onSubmit?: (project: NewProjectData) => void | Promise<void>;
     onCancel?: () => void;
+    className?: string;
 }
 
 const INITIAL_FORM: ProjectFormState = {
@@ -72,6 +73,7 @@ function isValidOptionalUrl(value: string): boolean {
 export default function AddProject({
     onSubmit,
     onCancel,
+    className,
 }: AddProjectProps) {
     const [form, setForm] = useState<ProjectFormState>(INITIAL_FORM);
     const [imageUrl, setImageUrl] = useState("");
@@ -216,59 +218,149 @@ export default function AddProject({
     };
 
     return (
-        <main className="min-h-screen bg-slate-50 px-4 py-8 dark:bg-slate-950 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-5xl">
-                <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                    <div>
-                        <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700 dark:border-indigo-900/60 dark:bg-indigo-950/50 dark:text-indigo-300">
-                            <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
-                            Portfolio management
-                        </div>
-                        <h1 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
-                            Add a project
-                        </h1>
-                        <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400 sm:text-base">
-                            Share the details, tools, and links that help visitors
-                            understand what you built.
-                        </p>
+        <section className={`w-full ${className ?? ""}`}>
+            <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                    <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700 dark:border-indigo-900/60 dark:bg-indigo-950/50 dark:text-indigo-300">
+                        <span className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
+                        Portfolio management
                     </div>
-
-                    {onCancel && (
-                        <button
-                            type="button"
-                            onClick={onCancel}
-                            className="inline-flex min-h-10 items-center justify-center rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-200/70 hover:text-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
-                        >
-                            Cancel
-                        </button>
-                    )}
+                    <h1 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
+                        Add a project
+                    </h1>
+                    <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600 dark:text-slate-400 sm:text-base">
+                        Share the details, tools, and links that help visitors
+                        understand what you built.
+                    </p>
                 </div>
 
-                <form onSubmit={handleSubmit} noValidate>
-                    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
-                        <div className="space-y-6">
-                            <ProjectDetails
-                                form={form}
-                                errors={errors}
-                                technologies={technologies}
-                                updateField={updateField}
-                            />
-                            <ProjectLinks
-                                form={form}
-                                errors={errors}
-                                updateField={updateField}
-                            />
-                        </div>
+                {onCancel && (
+                    <button
+                        type="button"
+                        onClick={onCancel}
+                        className="inline-flex min-h-10 items-center justify-center rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-200/70 hover:text-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                    >
+                        Cancel
+                    </button>
+                )}
+            </div>
 
-                        <aside className="space-y-6">
-                            <CoverImage
-                                imageUrl={imageUrl}
-                                error={errors.image}
-                                onChange={handleImageUrlChange}
-                            />
+            <form onSubmit={handleSubmit} noValidate>
+                <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+                    <div className="space-y-6">
+                        <ProjectDetails
+                            form={form}
+                            errors={errors}
+                            technologies={technologies}
+                            updateField={updateField}
+                        />
+                        <ProjectLinks
+                            form={form}
+                            errors={errors}
+                            updateField={updateField}
+                        />
+                    </div>
 
-                            <section className="rounded-2xl border border-indigo-100 bg-indigo-50/70 p-5 dark:border-indigo-900/60 dark:bg-indigo-950/30 sm:p-6">
-                                <div className="flex items-center gap-2 text-sm font-semibold text-indigo-950 dark:text-indigo-200">
+                    <aside className="space-y-6">
+                        <CoverImage
+                            imageUrl={imageUrl}
+                            error={errors.image}
+                            onChange={handleImageUrlChange}
+                        />
+
+                        <section className="rounded-2xl border border-indigo-100 bg-indigo-50/70 p-5 dark:border-indigo-900/60 dark:bg-indigo-950/30 sm:p-6">
+                            <div className="flex items-center gap-2 text-sm font-semibold text-indigo-950 dark:text-indigo-200">
+                                <svg
+                                    aria-hidden="true"
+                                    viewBox="0 0 20 20"
+                                    fill="none"
+                                    className="h-4 w-4"
+                                >
+                                    <path
+                                        d="M10 2.5 12 7l4.5 2-4.5 2-2 4.5L8 11l-4.5-2L8 7l2-4.5Z"
+                                        stroke="currentColor"
+                                        strokeWidth="1.4"
+                                        strokeLinejoin="round"
+                                    />
+                                    <path
+                                        d="m16 13 .9 2.1L19 16l-2.1.9L16 19l-.9-2.1L13 16l2.1-.9L16 13Z"
+                                        stroke="currentColor"
+                                        strokeWidth="1.2"
+                                        strokeLinejoin="round"
+                                    />
+                                </svg>
+                                A helpful tip
+                            </div>
+                            <p className="mt-2 text-sm leading-6 text-indigo-900/80 dark:text-indigo-200/80">
+                                A concise description, relevant technologies, and a working demo link make it easier for visitors to explore your work.
+                            </p>
+                        </section>
+                    </aside>
+                </div>
+
+                {submitError && (
+                    <div
+                        role="alert"
+                        className="mt-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200"
+                    >
+                        {submitError}
+                    </div>
+                )}
+                {submitSuccess && (
+                    <div
+                        role="status"
+                        className="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-200"
+                    >
+                        {submitSuccess}
+                    </div>
+                )}
+
+                <div className="mt-6 flex flex-col-reverse gap-3 border-t border-slate-200 pt-5 dark:border-slate-800 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                        <span className="text-rose-500">*</span> Required fields
+                    </p>
+                    <div className="flex flex-col-reverse gap-3 sm:flex-row">
+                        <button
+                            type="button"
+                            onClick={handleReset}
+                            disabled={isSubmitting}
+                            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 disabled:opacity-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:focus-visible:ring-offset-slate-950"
+                        >
+                            Reset form
+                        </button>
+                        <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 dark:focus-visible:ring-offset-slate-950"
+                        >
+                            {isSubmitting ? (
+                                <>
+                                    <svg
+                                        aria-hidden="true"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        className="h-4 w-4 animate-spin"
+                                    >
+                                        <circle
+                                            cx="12"
+                                            cy="12"
+                                            r="9"
+                                            stroke="currentColor"
+                                            strokeWidth="3"
+                                            opacity=".25"
+                                        />
+                                        <path
+                                            d="M21 12a9 9 0 0 0-9-9"
+                                            stroke="currentColor"
+                                            strokeWidth="3"
+                                            strokeLinecap="round"
+                                        />
+                                    </svg>
+                                    Saving project…
+                                </>
+                            ) : (
+                                <>
+                                    Add project
                                     <svg
                                         aria-hidden="true"
                                         viewBox="0 0 20 20"
@@ -276,111 +368,19 @@ export default function AddProject({
                                         className="h-4 w-4"
                                     >
                                         <path
-                                            d="M10 2.5 12 7l4.5 2-4.5 2-2 4.5L8 11l-4.5-2L8 7l2-4.5Z"
+                                            d="M4 10h12m-5-5 5 5-5 5"
                                             stroke="currentColor"
-                                            strokeWidth="1.4"
-                                            strokeLinejoin="round"
-                                        />
-                                        <path
-                                            d="m16 13 .9 2.1L19 16l-2.1.9L16 19l-.9-2.1L13 16l2.1-.9L16 13Z"
-                                            stroke="currentColor"
-                                            strokeWidth="1.2"
+                                            strokeWidth="1.7"
+                                            strokeLinecap="round"
                                             strokeLinejoin="round"
                                         />
                                     </svg>
-                                    A helpful tip
-                                </div>
-                                <p className="mt-2 text-sm leading-6 text-indigo-900/80 dark:text-indigo-200/80">
-                                    A concise description, relevant technologies, and a working demo link make it easier for visitors to explore your work.
-                                </p>
-                            </section>
-                        </aside>
+                                </>
+                            )}
+                        </button>
                     </div>
-
-                    {submitError && (
-                        <div
-                            role="alert"
-                            className="mt-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200"
-                        >
-                            {submitError}
-                        </div>
-                    )}
-                    {submitSuccess && (
-                        <div
-                            role="status"
-                            className="mt-6 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-200"
-                        >
-                            {submitSuccess}
-                        </div>
-                    )}
-
-                    <div className="mt-6 flex flex-col-reverse gap-3 border-t border-slate-200 pt-5 dark:border-slate-800 sm:flex-row sm:items-center sm:justify-between">
-                        <p className="text-xs text-slate-500 dark:text-slate-400">
-                            <span className="text-rose-500">*</span> Required fields
-                        </p>
-                        <div className="flex flex-col-reverse gap-3 sm:flex-row">
-                            <button
-                                type="button"
-                                onClick={handleReset}
-                                disabled={isSubmitting}
-                                className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 disabled:opacity-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:focus-visible:ring-offset-slate-950"
-                            >
-                                Reset form
-                            </button>
-                            <button
-                                type="submit"
-                                disabled={isSubmitting}
-                                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 dark:focus-visible:ring-offset-slate-950"
-                            >
-                                {isSubmitting ? (
-                                    <>
-                                        <svg
-                                            aria-hidden="true"
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            className="h-4 w-4 animate-spin"
-                                        >
-                                            <circle
-                                                cx="12"
-                                                cy="12"
-                                                r="9"
-                                                stroke="currentColor"
-                                                strokeWidth="3"
-                                                opacity=".25"
-                                            />
-                                            <path
-                                                d="M21 12a9 9 0 0 0-9-9"
-                                                stroke="currentColor"
-                                                strokeWidth="3"
-                                                strokeLinecap="round"
-                                            />
-                                        </svg>
-                                        Saving project…
-                                    </>
-                                ) : (
-                                    <>
-                                        Add project
-                                        <svg
-                                            aria-hidden="true"
-                                            viewBox="0 0 20 20"
-                                            fill="none"
-                                            className="h-4 w-4"
-                                        >
-                                            <path
-                                                d="M4 10h12m-5-5 5 5-5 5"
-                                                stroke="currentColor"
-                                                strokeWidth="1.7"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                            />
-                                        </svg>
-                                    </>
-                                )}
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </main>
+                </div>
+            </form>
+        </section>
     );
 }
