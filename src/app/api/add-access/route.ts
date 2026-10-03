@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 import { createAddProjectToken } from "@/src/lib/addProjectAccess";
 
 const COOKIE_NAME = "add_project_access";
-const SESSION_DURATION_SECONDS = 60 * 60 * 8;
+const SESSION_DURATION_SECONDS = 60 * 60; // 8 hours
 
 export async function POST(request: Request) {
-    const expectedPassword = process.env.ADD_PROJECT_PASSWORD;
-    const sessionSecret = process.env.ADD_PROJECT_SESSION_SECRET;
+    const expectedPassword = process.env.ADD_PROJECT_PASSWORD?.trim();
+    const sessionSecret = process.env.ADD_PROJECT_SESSION_SECRET?.trim();
 
     if (!expectedPassword || !sessionSecret) {
         return NextResponse.json(
@@ -26,8 +26,9 @@ export async function POST(request: Request) {
     const password =
         typeof body === "object" && body !== null && "password" in body &&
         typeof body.password === "string"
-            ? body.password
+            ? body.password.trim()
             : "";
+
     const expectedHash = createHash("sha256").update(expectedPassword).digest();
     const providedHash = createHash("sha256").update(password).digest();
 
@@ -45,8 +46,8 @@ export async function POST(request: Request) {
     response.cookies.set(COOKIE_NAME, token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
-        path: "/add/new",
+        sameSite: "lax",
+        path: "/",
         maxAge: SESSION_DURATION_SECONDS,
     });
 
