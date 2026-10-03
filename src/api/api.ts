@@ -32,22 +32,34 @@ export interface Skill {
     updated_at?: string;
 }
 
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+export function normalizeCategory(category: unknown): Project["category"] {
+    if (typeof category === "string") {
+        const cleaned = category.replace(/^[\[{\"\s]+|[\]}\"\s]+$/g, "").trim();
+        if (cleaned === "Mobile" || cleaned === "Automation") {
+            return cleaned;
+        }
+        return "Web";
+    }
+    if (Array.isArray(category) && category.length > 0) {
+        return normalizeCategory(category[0]);
+    }
+    return "Web";
+}
 
 export const fetchServices = async (
     setError: (error: string | null) => void,
     setLoading: (loading: boolean) => void,
     setServices: (services: Service[]) => void
 ) => {
-
     try {
-
         if (!supabaseUrl || !supabaseAnonKey) {
             throw new Error("Supabase credentials are missing in environment variables.");
         }
 
-        const supabase = createClient(supabaseUrl, supabaseAnonKey);
+        const supabase = createClient(supabaseUrl.trim(), supabaseAnonKey.trim());
 
         const { data, error } = await supabase
             .from("services")
@@ -68,21 +80,17 @@ export const fetchServices = async (
     }
 };
 
-
-
 export const fetchProjects = async (
     setError: (error: Error | null) => void,
     setLoading: (loading: boolean) => void,
     setProjects: (projects: Project[]) => void
 ) => {
-
     try {
-
         if (!supabaseUrl || !supabaseAnonKey) {
             throw new Error("Supabase credentials are missing in environment variables.");
         }
 
-        const supabase = createClient(supabaseUrl, supabaseAnonKey);
+        const supabase = createClient(supabaseUrl.trim(), supabaseAnonKey.trim());
 
         const { data, error } = await supabase
             .from("projects")
@@ -94,7 +102,11 @@ export const fetchProjects = async (
         }
 
         if (data) {
-            setProjects(data as Project[]);
+            const formatted = (data as any[]).map((proj) => ({
+                ...proj,
+                category: normalizeCategory(proj.category),
+            }));
+            setProjects(formatted as Project[]);
         }
     } catch (err: unknown) {
         const message = err instanceof Error
@@ -113,14 +125,12 @@ export const fetchSkills = async (
     setLoading: (loading: boolean) => void,
     setSkills: (skills: Skill[]) => void
 ) => {
-
     try {
-
         if (!supabaseUrl || !supabaseAnonKey) {
             throw new Error("Supabase credentials are missing in environment variables.");
         }
 
-        const supabase = createClient(supabaseUrl, supabaseAnonKey);
+        const supabase = createClient(supabaseUrl.trim(), supabaseAnonKey.trim());
 
         const { data, error } = await supabase
             .from("skills")
@@ -162,13 +172,13 @@ export const postNewProject = async (project: NewProjectInput): Promise<void> =>
         throw new Error("Supabase credentials are missing in environment variables.");
     }
 
-    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+    const supabase = createClient(supabaseUrl.trim(), supabaseAnonKey.trim());
     const { error } = await supabase.from("projects").insert({
         title: project.title,
         description: project.description,
         image: project.image,
         techStack: project.techStack.join(", "),
-        category: [project.category],
+        category: project.category,
         apkUrl: project.apkUrl ?? null,
         githubUrl: project.githubUrl ?? null,
         externalUrl: project.externalUrl ?? null,
@@ -184,13 +194,13 @@ export const editProject = async (projectId: string | number, updatedProject: Ne
         throw new Error("Supabase credentials are missing in environment variables.");
     }
 
-    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+    const supabase = createClient(supabaseUrl.trim(), supabaseAnonKey.trim());
     const { error } = await supabase.from("projects").update({
         title: updatedProject.title,
         description: updatedProject.description,
         image: updatedProject.image,
         techStack: updatedProject.techStack.join(", "),
-        category: [updatedProject.category],
+        category: updatedProject.category,
         apkUrl: updatedProject.apkUrl ?? null,
         githubUrl: updatedProject.githubUrl ?? null,
         externalUrl: updatedProject.externalUrl ?? null,
@@ -206,7 +216,7 @@ export const deleteProject = async (projectId: string | number): Promise<void> =
         throw new Error("Supabase credentials are missing in environment variables.");
     }
 
-    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+    const supabase = createClient(supabaseUrl.trim(), supabaseAnonKey.trim());
     const { error } = await supabase.from("projects").delete().eq("id", projectId);
 
     if (error) {
