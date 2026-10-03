@@ -1,147 +1,36 @@
 "use client";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  SiNextdotjs, SiReact, SiTypescript, SiJavascript, SiTailwindcss,
-  SiHtml5, SiKotlin, SiJetpackcompose, SiAndroid, SiFirebase,
-  SiGithub, SiMake, SiGit, SiAndroidstudio,
-} from "react-icons/si";
-import { MdOutlineApi } from "react-icons/md";
-import { VscAzureDevops, VscVscode } from "react-icons/vsc";
-import { TbAutomation, TbSparkles } from "react-icons/tb";
+import {fetchSkills, type Skill} from "@/src/api/api";
 
-const categories = ["All", "Web", "Mobile", "DevOps & Automation", "Tools"] as const;
-type Category = (typeof categories)[number];
+const CATEGORY_STYLES: Record<string, string> = {
+  Web: "border-sky-200 bg-sky-50 text-sky-700 dark:border-sky-800 dark:bg-sky-900/30 dark:text-sky-300",
+  Mobile: "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300",
+  "DevOps & Automation": "border-indigo-200 bg-indigo-50 text-indigo-700 dark:border-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300",
+  Tools: "border-slate-200 bg-slate-100 text-slate-700 dark:border-slate-700 dark:bg-slate-800/40 dark:text-slate-300",
+};
 
-interface Skill {
-  name: string;
-  color: string;
-  category: Exclude<Category, "All">;
-  icon: React.ReactNode;
-}
-
-const skills: Skill[] = [
-  // Web
-  {
-    name: "Next.js",
-    color: "bg-slate-200 text-slate-800 dark:bg-slate-800/50 dark:text-slate-300 border border-slate-300 dark:border-slate-700",
-    category: "Web",
-    icon: <SiNextdotjs className="w-4 h-4" />,
-  },
-  {
-    name: "React",
-    color: "bg-sky-100 text-sky-700 dark:bg-sky-900/30 dark:text-sky-300 border border-sky-200 dark:border-sky-800",
-    category: "Web",
-    icon: <SiReact className="w-4 h-4" />,
-  },
-  {
-    name: "TypeScript",
-    color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 border border-blue-200 dark:border-blue-800",
-    category: "Web",
-    icon: <SiTypescript className="w-4 h-4" />,
-  },
-  {
-    name: "JavaScript",
-    color: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300 border border-yellow-200 dark:border-yellow-800",
-    category: "Web",
-    icon: <SiJavascript className="w-4 h-4" />,
-  },
-  {
-    name: "Tailwind CSS",
-    color: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800",
-    category: "Web",
-    icon: <SiTailwindcss className="w-4 h-4" />,
-  },
-  {
-    name: "HTML5 & CSS3",
-    color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300 border border-orange-200 dark:border-orange-800",
-    category: "Web",
-    icon: <SiHtml5 className="w-4 h-4" />,
-  },
-  {
-    name: "REST APIs",
-    color: "bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-300 border border-rose-200 dark:border-rose-800",
-    category: "Web",
-    icon: <MdOutlineApi className="w-4 h-4" />,
-  },
-  // Mobile
-  {
-    name: "Kotlin",
-    color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300 border border-purple-200 dark:border-purple-800",
-    category: "Mobile",
-    icon: <SiKotlin className="w-4 h-4" />,
-  },
-  {
-    name: "Jetpack Compose",
-    color: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300 border border-green-200 dark:border-green-800",
-    category: "Mobile",
-    icon: <SiJetpackcompose className="w-4 h-4" />,
-  },
-  {
-    name: "Android",
-    color: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800",
-    category: "Mobile",
-    icon: <SiAndroid className="w-4 h-4" />,
-  },
-  {
-    name: "Firebase",
-    color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300 border border-amber-200 dark:border-amber-800",
-    category: "Mobile",
-    icon: <SiFirebase className="w-4 h-4" />,
-  },
-  // DevOps & Automation
-  {
-    name: "Git & GitHub",
-    color: "bg-slate-100 text-slate-700 dark:bg-slate-800/40 dark:text-slate-300 border border-slate-200 dark:border-slate-700",
-    category: "DevOps & Automation",
-    icon: <SiGit className="w-4 h-4" />,
-  },
-  {
-    name: "DevOps",
-    color: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800",
-    category: "DevOps & Automation",
-    icon: <VscAzureDevops className="w-4 h-4" />,
-  },
-  {
-    name: "Automation",
-    color: "bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300 border border-teal-200 dark:border-teal-800",
-    category: "DevOps & Automation",
-    icon: <TbAutomation className="w-4 h-4" />,
-  },
-  {
-    name: "Make.com",
-    color: "bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-900/30 dark:text-fuchsia-300 border border-fuchsia-200 dark:border-fuchsia-800",
-    category: "Tools",
-    icon: <SiMake className="w-4 h-4" />,
-  },
-  // Tools
-  {
-    name: "Android Studio",
-    color: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 border border-green-200 dark:border-green-800",
-    category: "Tools",
-    icon: <SiAndroidstudio className="w-4 h-4" />,
-  },
-  {
-    name: "VS Code",
-    color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 border border-blue-200 dark:border-blue-800",
-    category: "Tools",
-    icon: <VscVscode className="w-4 h-4" />,
-  },
-  {
-    name: "Antigravity",
-    color: "bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300 border border-violet-200 dark:border-violet-800",
-    category: "Tools",
-    icon: <TbSparkles className="w-4 h-4" />,
-  },
-];
+const DEFAULT_SKILL_STYLE =
+  "border-slate-200 bg-white text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300";
 
 export default function Skills() {
-  const [active, setActive] = useState<Category>("All");
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<Error | null>(null);
+  const [skills, setSkills] = useState<Skill[]>([]);
+  const [active, setActive] = useState("All");
 
-  const filtered = active === "All" ? skills : skills.filter((s) => s.category === active);
+  useEffect(() => {
+    void fetchSkills(setError, setLoading, setSkills);
+  }, []);
+
+  const categories = ["All", ...new Set(skills.map((skill) => skill.category))];
+  const filteredSkills =
+    active === "All"
+      ? skills
+      : skills.filter((skill) => skill.category === active);
 
   return (
-    <section className="py-16">
+    <section id="skills" className="py-16">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -152,50 +41,71 @@ export default function Skills() {
           Skills
         </h2>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActive(cat)}
-              className={`relative px-4 py-1.5 rounded-full text-sm font-semibold border transition-all duration-200 ${
-                active === cat
-                  ? "bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-500/25"
-                  : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-indigo-400 dark:hover:border-indigo-600 hover:text-indigo-600 dark:hover:text-indigo-400"
-              }`}
-            >
-              {cat}
-              {active === cat && (
-                <motion.span
-                  layoutId="active-pill"
-                  className="absolute inset-0 rounded-full bg-indigo-600 -z-10"
-                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                />
-              )}
-            </button>
-          ))}
-        </div>
+        {error ? (
+          <p role="alert" className="text-sm text-rose-600 dark:text-rose-400">
+            Could not load skills: {error.message}
+          </p>
+        ) : loading ? (
+          <p role="status" className="text-sm text-slate-500 dark:text-slate-400">
+            Loading skills...
+          </p>
+        ) : skills.length === 0 ? (
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            No skills to display.
+          </p>
+        ) : (
+          <>
+            <div className="mb-8 flex flex-wrap gap-2" aria-label="Filter skills by category">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setActive(category)}
+                  aria-pressed={active === category}
+                  className={`relative rounded-full border px-4 py-1.5 text-sm font-semibold transition-all duration-200 ${
+                    active === category
+                      ? "border-indigo-600 bg-indigo-600 text-white shadow-md shadow-indigo-500/25"
+                      : "border-slate-200 bg-white text-slate-600 hover:border-indigo-400 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-indigo-600 dark:hover:text-indigo-400"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
 
-        {/* Skills Grid */}
-        <motion.div layout className="flex flex-wrap gap-3">
-          <AnimatePresence mode="popLayout">
-            {filtered.map((skill, i) => (
-              <motion.span
-                key={skill.name}
-                layout
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ delay: i * 0.04, duration: 0.25 }}
-                whileHover={{ scale: 1.08, y: -2 }}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold shadow-sm cursor-default transition-shadow hover:shadow-md ${skill.color}`}
-              >
-                {skill.icon}
-                {skill.name}
-              </motion.span>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+            <motion.div layout className="flex flex-wrap gap-3">
+              <AnimatePresence mode="popLayout">
+                {filteredSkills.map((skill, index) => (
+                  <motion.span
+                    key={`${skill.category}-${skill.name}`}
+                    layout
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ delay: index * 0.04, duration: 0.25 }}
+                    whileHover={{ scale: 1.04, y: -2 }}
+                    className={`flex cursor-default items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold shadow-sm transition-shadow hover:shadow-md ${
+                      CATEGORY_STYLES[skill.category] ?? DEFAULT_SKILL_STYLE
+                    }`}
+                  >
+                    {skill.icon && (
+                      <img
+                        src={skill.icon}
+                        alt=""
+                        aria-hidden="true"
+                        loading="lazy"
+                        width={20}
+                        height={20}
+                        className="h-5 w-5 object-contain"
+                      />
+                    )}
+                    {skill.name}
+                  </motion.span>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          </>
+        )}
       </motion.div>
     </section>
   );

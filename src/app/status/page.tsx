@@ -1,4 +1,4 @@
-import Status from "../../components/Projects/ServiceTracker/Status";
+import Status from "@/src/components/ServiceTracker/Status";
 
 export default function StatusPage() {
     return <Status />;

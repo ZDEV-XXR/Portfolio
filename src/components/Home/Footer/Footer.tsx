@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="w-full py-8 mt-12 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
+    <footer className="w-full pt-8 pb-24 md:pb-8 mt-12 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
         <p className="text-slate-500 dark:text-slate-400 text-sm">
           © {new Date().getFullYear()} Hamza Lemghari. All rights reserved.
