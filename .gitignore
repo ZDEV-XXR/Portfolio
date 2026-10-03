@@ -10,14 +10,13 @@ node_modules/
 .next/
 out/
 build/
+next-env.d.ts
 
 # --- ENVIRONMENT VARIABLES ---
 # CRITICAL: This prevents your private API keys from being public on GitHub.
 # You will add these keys manually in the Vercel Dashboard instead.
-.env
-.env.development.local
-.env.test.local
-.env.production.local
+.env*
+!.env.example
 
 # --- DEBUG & LOGS ---
 npm-debug.log*

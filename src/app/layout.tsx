@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "@/src/styles/globals.css";
-import { ThemeProvider } from "@/src/components/ui/theme/ThemeProvider";
-import Navbar from "@/src/components/Home/Navbar/Navbar";
-import Footer from "@/src/components/Home/Footer/Footer";
+import "./globals.css";
+import { Providers } from "@/src/components/layout/Providers";
+import Navbar from "@/src/components/layout/Navbar";
+import Footer from "@/src/components/layout/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = Geist({
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "Hamza Lemghari",
   description: "Portfolio of Hamza Lemghari, a software engineer specializing in web/app development and design.",
    icons: {
-    icon: "/assets/me.jpg",
+    icon: "/me.jpg",
   },
 };
 
@@ -32,12 +32,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth scroll-pt-24" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} min-h-full flex flex-col`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Providers attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           {children}
           <Footer />
           <SpeedInsights/>
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
