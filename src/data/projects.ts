@@ -1,6 +1,6 @@
 import { Url } from "next/dist/shared/lib/router/router";
 import RootLayout from "../app/layout";
-import Status from "@/src/components/Projects/ServiceTracker/Status"
+import Status from "@/src/components/ServiceTracker/Status"
 
 export interface Project {
   id: string;
@@ -15,6 +15,7 @@ export interface Project {
   category: 'Web' | 'Mobile' | 'Automation';
 }
 
+/*
 export const projects: Project[] = [
   {
     id: "1",
@@ -65,4 +66,4 @@ export const projects: Project[] = [
     image: "./assets/do.jpg",
     category: "Automation"
   }
-];
+];*/

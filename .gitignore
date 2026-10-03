@@ -15,7 +15,7 @@ build/
 # CRITICAL: This prevents your private API keys from being public on GitHub.
 # You will add these keys manually in the Vercel Dashboard instead.
 .env
-.env.local
+.env
 .env.development.local
 .env.test.local
 .env.production.local
