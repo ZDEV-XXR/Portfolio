@@ -1,8 +1,8 @@
 "use client";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { fetchSkills } from '@/src/lib/db';
-import type { Skill } from '@/src/lib/types';
+import { fetchSkills } from "@/src/lib/db";
+import type { Skill } from "@/src/lib/types";
 
 const CATEGORY_STYLES: Record<string, string> = {
   Web: "border-sky-200 bg-sky-50 text-sky-700 dark:border-sky-800 dark:bg-sky-900/30 dark:text-sky-300",
@@ -57,34 +57,65 @@ export default function Skills() {
         ) : (
           <>
             <div className="mb-8 flex flex-wrap gap-2" aria-label="Filter skills by category">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  type="button"
-                  onClick={() => setActive(category)}
-                  aria-pressed={active === category}
-                  className={`relative rounded-full border px-4 py-1.5 text-sm font-semibold transition-all duration-200 ${
-                    active === category
-                      ? "border-indigo-600 bg-indigo-600 text-white shadow-md shadow-indigo-500/25"
-                      : "border-slate-200 bg-white text-slate-600 hover:border-indigo-400 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-indigo-600 dark:hover:text-indigo-400"
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
+              {categories.map((category) => {
+                const isSelected = active === category;
+                return (
+                  <button
+                    key={category}
+                    type="button"
+                    onClick={() => setActive(category)}
+                    aria-pressed={isSelected}
+                    className={`relative rounded-full border px-4 py-1.5 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 ${
+                      isSelected
+                        ? "border-transparent text-white"
+                        : "border-slate-200 bg-white text-slate-600 hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-indigo-600 dark:hover:text-indigo-400"
+                    }`}
+                  >
+                    {isSelected && (
+                      <motion.span
+                        layoutId="activeSkillCategory"
+                        className="absolute inset-0 rounded-full bg-indigo-600 shadow-md shadow-indigo-500/25"
+                        transition={{ type: "spring", stiffness: 500, damping: 35 }}
+                      />
+                    )}
+                    <span className="relative z-10">{category}</span>
+                  </button>
+                );
+              })}
             </div>
 
-            <motion.div layout className="flex flex-wrap gap-3">
+            <motion.div
+              layout
+              transition={{ layout: { duration: 0.25, ease: "easeOut" } }}
+              className="flex flex-wrap gap-3"
+            >
               <AnimatePresence mode="popLayout">
                 {filteredSkills.map((skill, index) => (
                   <motion.span
                     key={`${skill.category}-${skill.name}`}
                     layout
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ delay: index * 0.04, duration: 0.25 }}
-                    whileHover={{ scale: 1.04, y: -2 }}
+                    initial={{ opacity: 0, scale: 0.88, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{
+                      opacity: 0,
+                      scale: 0.85,
+                      y: -6,
+                      transition: { duration: 0.12, ease: "easeOut" },
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 450,
+                      damping: 28,
+                      mass: 0.6,
+                      delay: Math.min(index * 0.015, 0.08),
+                      layout: {
+                        type: "spring",
+                        stiffness: 450,
+                        damping: 32,
+                      },
+                    }}
+                    whileHover={{ scale: 1.04, y: -2, transition: { duration: 0.15 } }}
+                    whileTap={{ scale: 0.98 }}
                     className={`flex cursor-default items-center gap-2 rounded-xl border px-4 py-2 text-sm font-semibold shadow-sm transition-shadow hover:shadow-md ${
                       CATEGORY_STYLES[skill.category] ?? DEFAULT_SKILL_STYLE
                     }`}
